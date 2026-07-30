@@ -60,6 +60,25 @@
 </div>
 </section>
 
+<div class="marquee" aria-hidden="true">
+<div class="marquee-track">
+<span>Operations Director</span><span>Supply Chain Director</span><span>General Manager</span><span>Head of Transport</span><span>Managing Director</span><span>Head of Warehousing</span><span>Chief Operating Officer</span><span>Planning Manager</span><span>Non-Executive Director</span><span>Head of Operations</span><span>Site Director</span><span>Continuous Improvement Lead</span>
+<span>Operations Director</span><span>Supply Chain Director</span><span>General Manager</span><span>Head of Transport</span><span>Managing Director</span><span>Head of Warehousing</span><span>Chief Operating Officer</span><span>Planning Manager</span><span>Non-Executive Director</span><span>Head of Operations</span><span>Site Director</span><span>Continuous Improvement Lead</span>
+</div>
+</div>
+
+<section class="statband">
+<div class="wrap">
+<p class="stateyebrow">The cost of getting leadership hiring wrong</p>
+<div class="statrow">
+<div class="stat reveal"><div class="statnum" data-target="132000" data-prefix="&pound;">0</div><div class="statlbl">Cost of one bad mid-manager hire</div><div class="statsrc">Source: REC</div></div>
+<div class="stat reveal"><div class="statnum" data-target="41" data-suffix="%">0</div><div class="statlbl">UK employers who regret a recent hire</div><div class="statsrc">Source: CIPD, 2024</div></div>
+<div class="stat reveal"><div class="statnum" data-plain="2 in 5">2 in 5</div><div class="statlbl">Roles filled with the wrong person</div><div class="statsrc">Source: REC</div></div>
+<div class="stat reveal"><div class="statnum" data-target="4500" data-suffix="">0</div><div class="statlbl">People led at peak by our founder</div><div class="statsrc">The operator who prevents it</div></div>
+</div>
+</div>
+</section>
+
 <section>
 <div class="wrap">
 <span class="eyebrow">Why SCL</span>
@@ -210,6 +229,29 @@ if(matchMedia('(prefers-reduced-motion: no-preference)').matches){
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));}
 else{document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'));}
+
+(function(){
+  var nums=document.querySelectorAll('.statnum[data-target]');
+  if(!nums.length)return;
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function fmt(n){return n.toLocaleString('en-GB');}
+  function run(el){
+    var target=+el.getAttribute('data-target'),suf=el.getAttribute('data-suffix')||'',pre=el.getAttribute('data-prefix')||'';
+    if(reduce){el.innerHTML=pre+fmt(target)+suf;return;}
+    var dur=1600,t0=null;
+    function step(ts){
+      if(!t0)t0=ts;
+      var p=Math.min((ts-t0)/dur,1),eased=1-Math.pow(1-p,3);
+      el.innerHTML=pre+fmt(Math.round(target*eased))+suf;
+      if(p<1)requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  var co=new IntersectionObserver(function(es){es.forEach(function(e){
+    if(e.isIntersecting){run(e.target);co.unobserve(e.target);}
+  });},{threshold:.5});
+  nums.forEach(function(el){co.observe(el);});
+})();
 </script>
 </body>
 </html>
