@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://www.sclrecruitment.co.uk/sitemap.xml

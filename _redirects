@@ -1,0 +1,18 @@
+# 301 redirects from old site URLs to new pages
+/about-us/            /about.html                 301
+/about-us             /about.html                 301
+/services/            /executive-search.html      301
+/services             /executive-search.html      301
+/contact-us/          /contact.html               301
+/contact-us           /contact.html               301
+/blog-2/              /insights.html              301
+/blog-2               /insights.html              301
+/what-we-do-at-scl-recruitment/                                  /about.html  301
+/the-supply-chain-talent-crunch-of-2025/                         /the-supply-chain-talent-crunch.html  301
+/the-talent-crunch-in-uk-supply-chains-a-top-challenge-for-smes/ /the-supply-chain-talent-crunch.html  301
+/why-your-recruitment-process-is-losing-top-talent/              /why-your-recruitment-process-loses-top-talent.html  301
+/author/*             /insights.html              301
+/privacy-policy/      /privacy-policy.html        301
+/privacy-policy       /privacy-policy.html        301
+# Catch-all: any old URL not matched above goes to the homepage
+/*                    /index.html                 301
